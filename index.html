@@ -1,0 +1,186 @@
+<html>
+<head>
+    <title>Main Page</title>
+    <style>
+        body {
+            font-family: Helvetica, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #8B4513;
+            margin-top: 20px;
+            animation: fadeIn 2s;
+        }
+
+        .highlight-box {
+            background-color: #fff;
+            border: 2px solid #8B4513;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight-box p {
+            font-size: 20px;
+            color: #333;
+            line-height: 40px;
+            text-align: justify;
+        }
+
+        /* Clock */
+        .clock {
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #8B4513;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid #4682B4;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Button Styles */
+        .button-container {
+            margin: 20px;
+        }
+
+        .nav-button {
+            background-color: #fff;
+            color: #8B4513;
+            border: 2px solid #8B4513;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 15px;
+            cursor: pointer;
+            text-decoration: none;
+            margin: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-button:hover {
+            background-color: #8B4513;
+            color: #fff;
+        }
+
+        footer {
+            background-color: #8B4513;
+            color: #fff;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin: 10px 0;
+            font-size: 15px;
+        }
+
+        .social-media a {
+            margin: 10px;
+            text-decoration: none;
+        }
+
+        .social-media img {
+            width: 50px;
+            height: 50px;
+            transition: transform 0.3s;
+        }
+
+        .social-media img:hover {
+            transform: scale(1.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body background="Images/mainpagepic/background1.png">
+
+    <!-- Navigation Bar -->
+    <header>
+            <header>
+                <div class="clock" id="digitalClock">00:00:00</div>
+                <script>
+                    function updateClock() {
+                        const clockElement = document.getElementById('digitalClock');
+                        const now = new Date();
+                        let hours = now.getHours();
+                        const minutes = String(now.getMinutes()).padStart(2, '0');
+                        const seconds = String(now.getSeconds()).padStart(2, '0');
+                        const ampm = hours >= 12 ? 'PM' : 'AM';
+                        hours = hours % 12 || 12;
+                        hours = String(hours).padStart(2, '0');
+                        clockElement.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+                    }
+                    setInterval(updateClock, 1000);
+                    updateClock();
+                </script>
+            </header>
+    </header>
+
+    <h1>Main Page</h1>
+
+    <h2>Click here if you want to go to each individual part:</h2>
+
+<div class="button-container">
+    <a href="biodata.html" class="nav-button">Biodata</a>
+    <a href="biodata.html#experience" class="nav-button">Experience</a>
+    <a href="biodata.html#education" class="nav-button">Education</a>
+    <a href="biodata.html#family" class="nav-button">Family</a>
+    <a href="biodata.html#gallery" class="nav-button">Gallery</a>
+</div>
+
+    <hr>
+
+    <h2>Here is my social media:</h2>
+    <div class="social-media">
+        <a href="https://www.instagram.com/mirmeimay/" target="_blank">
+            <img src="Images/mainpagepic/instagram.png" alt="Instagram">
+        </a>
+        <a href="https://www.youtube.com/@Zu11o" target="_blank">
+            <img src="Images/mainpagepic/youtube.png" alt="YouTube">
+        </a>
+        <a href="https://www.tiktok.com/@zuttosama?is_from_webapp=1&sender_device=pc" target="_blank">
+            <img src="Images/mainpagepic/tiktok.png" alt="Tiktok">
+        </a>
+        <a href="https://t.me/Mirmaymei" target="_blank">
+            <img src="Images/mainpagepic/Telegram.png" alt="Telegram">
+        </a>
+    </div>
+
+    <hr>
+
+    <div class="highlight-box">
+        <p>
+            Welcome to my personal website, where I share some information about myself. Dive into 
+            <mark>Home</mark> for an overview of what I offer and what this site is all about. Explore my 
+            <mark>Biodata</mark> section for a detailed look at who I am. 
+            Discover the milestones and adventures I have experienced in the <mark>Experience</mark> tab, where I share my career paths and key achievements. In <mark>Education</mark>, learn about my academic background and the skills I acquired along the way. 
+            Meet the people closest to me in the <mark>Family</mark> section, a tribute to the bonds and relationships that shape my lives. 
+            Browse through my favorite memories in the <mark>Gallery</mark>, a collection of moments that capture the essence of my journey.
+        </p>
+    </div>
+    
+
+    <footer>
+        <div class="footer-content">
+            <p>MOHAMAD AMIR HAQEM BIN HAMDAN | JCDIM1105B | 2022859764</p>
+            <p>Contact me: <a href="mailto:haqem.hamdan@gmail.com" style="color: #fff; text-decoration: none;">haqem.hamdan@gmail.com</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,609 @@
+<html>    
+<head>
+    <b><title>Biodata</title></b>
+    <style>
+
+
+/* Header */
+header {
+    background-color: #FFDAB9;
+    color: #8B4513;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 2px solid #FFB5A7;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Clock*/
+.clock {
+    font-size: 25px;
+    font-weight: bold;
+    background-color: #8B4513;
+    max-width: 50%;
+    color: white;
+    padding: 5px 10px;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #FFB5A7;
+    border: 1px solid #8B4513;
+}
+
+/* Body */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FFE5D9;
+    color: #5D4037;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    color: #C17767;
+    text-shadow: 1px 1px 0px #FFF;
+    border-bottom: 2px solid #FFB5A7;
+    padding-bottom: 8px;
+}
+
+h3 {
+    color: #D4756E;
+    text-shadow: 1px 1px 0px #FFF;
+    text-align: center;
+}
+
+h4 {
+    color: #8B4513;
+    text-align: center;
+}
+
+p, li {
+    color: #5D4037;
+    line-height: 1.8;
+}
+
+hr {
+    border: 1px solid #FFB5A7;
+    margin: 30px 0;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #FFE8E0;
+    color: #8B4513;
+    width: 200px;
+    padding-top: 20px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-right: 2px solid #FFB5A7;
+}
+
+.sidebar a {
+    display: block;
+    padding: 12px;
+    color: #A06B54;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    color: #FFF0EB;
+    background-color: #D4756E;
+}
+
+
+/* Main Content */
+.content {
+    margin-left: 220px;
+    padding: 20px;
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 181, 167, 0.3);
+}
+
+
+/* Image */
+img {
+    border: 3px solid #FFB5A7;
+    border-radius: 15px;
+    margin: 15px 0;
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.02);
+}
+
+.square-img {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    object-fit: cover;
+}
+
+.pet-img {
+    width: 50%;
+    max-height: 400px;
+    object-fit: cover;
+    margin: 15px auto;
+}
+
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+th, td {
+    border: 1px solid #FFB5A7;
+    padding: 12px;
+}
+
+th {
+    background-color: #FFDAB9;
+    color: #8B4513;
+}
+
+td {
+    background-color: #FFF5EE;
+}
+
+
+/* Section */
+.section {
+    background-color: #FFF5EE;
+    padding: 20px;
+    margin-top: 20px;
+    border: 2px solid #FFB5A7;
+    border-radius: 15px;
+}
+
+/* Gallery */
+.gallery-section {
+    margin: 2rem auto;
+    max-width: 1200px;
+    padding: 0 25px;
+}
+
+.gallery-title {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 25px;
+    color: #FFB5A7;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding-top: 56.25%;
+}
+
+.gallery-item img,
+.gallery-item video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border-radius: 8px;
+}
+
+.gallery-item:hover img,
+.gallery-item:hover video {
+    transform: scale(1.1);
+}
+        
+
+/* Audio Player */
+audio {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    border-radius: 20px;
+    background-color: #FFE5D9;
+    margin-top: 20px;
+}
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <b><h1>About Me</h1></b>
+        <div class="clock" id="digitalClock">00:00:00</div>
+        <script>
+            function updateClock() {
+                const clockElement = document.getElementById('digitalClock');
+                const now = new Date();
+                let hours = now.getHours();
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                hours = hours % 12 || 12;
+                hours = String(hours).padStart(2, '0');
+                clockElement.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+            }
+            setInterval(updateClock, 1000);
+            updateClock();
+        </script>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <i><a href="mainpage.html">Home</a></i>
+        <i><a href="#experience">Experience</a></i>
+        <i><a href="#education">Education</a></i>
+        <i><a href="#family">Family</a></i>
+        <i><a href="#gallery">Gallery</a></i>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="content">
+        <marquee>LEARN MORE ABOUT ME</marquee>
+
+        
+        <center>
+            <img src="Images/Biodatapics/me.jpg" alt="My Icon" width="150" height="150">
+        </center>
+
+        
+        <h3>Mohamad Amir Haqem Bin Hamdan</h3>
+        <h4>2022859764</h4>
+
+        <!-- Table -->
+        <table>
+            <tr>
+                <th>Full Name</th>
+                <td>Mohamad Amir Haqem Bin Hamdan</td>
+            </tr>
+            <tr>
+                <th>Birthday</th>
+                <td>21 January 2004</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>20</td>
+            </tr>
+            <tr>
+                <th>Class</th>
+                <td>JCDIM1105B</td>
+            </tr>
+            <tr>
+                <th>Hobby</th>
+                <td>Listening to music</td>
+            </tr>
+        </table>
+
+        <table>
+            <thead>
+              <tr>
+                <th>Skill</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Punctual and Deadline-Oriented</td>
+                <td>Consistently complete tasks on time, often ahead of schedule, demonstrating excellent time management and reliability.</td>
+              </tr>
+              <tr>
+                <td>Quick Learner</td>
+                <td>Adapt quickly to new challenges and acquire new skills efficiently, ensuring productivity in dynamic environments.</td>
+              </tr>
+              <tr>
+                <td>Problem-Solving</td>
+                <td>Strong analytical skills to tackle complex challenges and find innovative solutions.</td>
+              </tr>
+              <tr>
+                <td>Team Collaboration</td>
+                <td>Excellent communication and teamwork skills to contribute effectively in group settings.</td>
+              </tr>
+            </tbody>
+          </table>
+
+        <p>Hi, my name is Mohamad Amir Haqem bin Hamdan, and you can call me Amir. I'm a 20-year-old student currently studying information management at UiTM Segamat. I'm passionate about learning new things and working together, and I love spending my time listening to music. I enjoy exploring new things, whether it's learning a new skill or taking a walk around the mountains and forest. I consider myself friendly, playful, and always ready for a new adventure!</p>
+
+        <hr>
+
+        <!-- Experience Section -->
+        <h2 id="experience">Experience</h2>
+        <div class="experience">
+            <h3>Position: Intern at Pusat Pendidikan Daerah Kluang</h3>
+            <p>Duration: 21 June 2024 – 12 September 2024</p>
+
+            <p>
+                I chose to work at PPD Kluang for my internship because it was a strategic place. My house is close to work, and it is also a safe place since there are police stations nearby. Not only that, but the place also has a lot of food vendors, so I can go to the place for lunch break. The officers in PPD Kluang are also friendly to each other and very welcoming.
+            </p>
+
+            <ul>
+                <li>Assisted in managing a lot of PPD Kluang documents, making new documents, and preserving the documents that were received from schools, and learnt a lot about file management, social skills, and making a website using Looker Studio.</li>
+                <li>Got placed in the school management sector.</li>
+                <li>Gained experience in how a liaison officer works.</li>
+            </ul>
+
+            <center>
+                <img src="Images/Experiencepics/internship1.jpg" alt="Internship Photo 1" width="300" height="200">
+                <img src="Images/Experiencepics/internship2.jpg" alt="Internship Photo 2" width="300" height="200">
+            </center>
+        </div>
+
+        <hr>
+
+        <!-- Education Section -->
+        <h2 id="education">Education</h2>
+        <div class="education">
+            <!-- Current -->
+            <center>
+                <div style="width: 20vw; max-width: 150px; height: auto;">
+                    <img src="Images/Educationpics/uitmlogo.png" alt="UiTM Logo">
+                </div>
+            </center>
+            <h3>Current Institution: Universiti Teknologi MARA (UiTM) Segamat</h3>
+            <p>Course: Information Management</p>
+            <p>Year: 2021 - present</p>
+
+            <!-- Table -->
+            <table>
+                <tr>
+                    <th>Semester</th>
+                    <th>GPA</th>
+                </tr>
+                <tr>
+                    <td>Semester 1</td>
+                    <td>3.31</td>
+                </tr>
+                <tr>
+                    <td>Semester 2</td>
+                    <td>3.25</td>
+                </tr>
+                <tr>
+                    <td>Semester 3</td>
+                    <td>3.40</td>
+                </tr>
+                <tr>
+                    <td>Semester 4</td>
+                    <td>3.32</td>
+                </tr>
+                <tr>
+                    <th>Overall CGPA</th>
+                    <th>3.32</th>
+                </tr>
+            </table>
+
+            <hr>
+
+            <!-- Previous Education -->
+            <h3>Previous Education</h3>
+
+            <!-- SMK Section -->
+            <center>
+                <div style="width: 20vw; max-width: 150px; height: auto;">
+                    <img src="Images/Educationpics/stab.png" style="width: 100%; height: auto; border-radius: 10px;">
+                </div>
+            </center>
+            <h4>Sekolah Menengah Kebangsaan Tengku Aris Bendahara (Graduated in 2021)</h4>
+            <ul>
+                <li>SPM: 4A</li>
+                <ol type="I">
+                    <li>Bahasa Melayu</li>
+                    <li>Bahasa English</li>
+                    <li>Sains Sukan</li>
+                    <li>Matematik</li>
+                </ol>    
+                <li>Chairman of the Mathematics and Science Club</li>
+                <li>Chairman of the Department of Road Transport Club</li>
+                <li>Chairman of the Handball Club</li>
+                <li>Active member of the handball team</li>
+            </ul>
+
+            <center>
+                <img src="Images/Educationpics/handball.gif" alt="Handball" style="width: 20vw; max-width: 150px; height: auto; border-radius: 50%;">
+            </center>
+
+            <!-- SK Education -->
+            <center>
+                <div style="width: 20vw; max-width: 150px; height: auto;">
+                    <img src="Images/Educationpics/syedzain.png" alt="Primary School Logo">
+                </div>
+            </center>
+            <h4>Sekolah Rendah Dato Syed Zain Al-Shahab (Graduated in 2016)</h4>
+            <ul>
+                <li>UPSR: 6B</li>
+                <ol type="I">
+                    <li>Bahasa Melayu</li>
+                    <li>Bahasa English</li>
+                    <li>Bahasa Melayu 2</li>
+                    <li>Bahasa English 2</li>
+                    <li>Matematik</li>
+                    <li>Sains</li>
+                </ol>            
+                <li>Active member of the handball team</li>
+                <li>Active member of the Nasyid team</li>
+                <li>Active member of the sepak takraw team</li>
+            </ul>
+
+            <center>
+                <img src="Images/Educationpics/takraw.gif" alt="Takraw" style="width: 20vw; max-width: 150px; height: auto; border-radius: 50%;">
+            </center>
+        </div>
+
+        <!-- Family -->
+        <h2 id="family">Family</h2>
+        <p>I have a loving family who supports me in all my endeavors.</p>
+
+        <div class="family-intro">
+            <h3>Introduction of Family Members</h3>
+            <center><img src="Images/Familypics/family.jpg" alt="Family Photo" class="square-img"></center>
+            <p>
+                I come from a family of six. My father, Hamdan, is a high school teacher who loves knitting.
+                My mother, Jamanah, is also a high school teacher who loves to do her work all the time and
+                cook many delicious foods for me. I have an older brother, Hamka, who works as a quantity surveyor.
+                He really likes to go hiking and play rugby. I also have two sisters: Jasmin, who works as a tax associate,
+                and Adibah, who works as an engineer. Both of them really like to travel a lot.
+            </p>
+        </div>
+
+        <div class="family-traditions">
+            <h3>Family Traditions</h3>
+            <center><img src="Images/Familypics/Travel.jpg" alt="Family Trip to Korea" class="square-img"></center>
+            <p>
+                Every year, we plan to travel to a different country to spend family time together when all of us have a week off from work.
+                We also make sure to visit our grandparents' house usually each month. On public holidays, we typically travel around the country,
+                take pictures, or visit theme parks and water parks as a family.
+            </p>
+        </div>
+
+        <div class="family-pets">
+            <h3>Pets</h3>
+            <center><img src="Images/Familypics/Do.jpg" alt="Photo of Do, my cat" class="pet-img"></center>
+            <p>
+                Over the years, I have had plenty of pets, most of them being cats. Currently, I have a pet cat named "Do," who has been with me
+                for several years. My father took him in when he was neglected by his mother, and gave him to me since I wanted a cat after my previous
+                one passed away from old age. Do is loved by all the family members because he is very friendly and well-behaved.</p>
+            </div>
+    
+            <div class="family-thoughts">
+                <h3>What I Think About Family</h3>
+                <div style="text-align: center; margin: 20px 0;">
+                    <img src="Images/Familypics/thinking.gif" alt="Family-related GIF" style="max-width: 100%; max-height: 400px; object-fit: contain;">
+                </div>
+                <p>
+                    "Personally, I believe that family plays an important role in my life because they help and support me a lot.
+                    My parents assist me with decision-making, provide advice, and remind me to behave and respect others.
+                    They also encourage me to choose my friends wisely, as they have a big influence on me.
+                    My brother is a great companion for games and sports, while my sisters have taught me how to respect others
+                    and take care of myself when I'm alone at home."
+                </p>
+            </div>
+    
+            <!-- Gallery -->
+<h2 id="gallery">Gallery</h2>
+
+<!-- Family Section -->
+<section class="gallery-section">
+    <h2 class="gallery-title">Family</h2>
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <a href="Images/Gallerypics/familypic1.jpg" target="_blank" download>
+                <img src="Images/Gallerypics/familypic1.jpg" alt="Family Photo 1">
+            </a>
+        </div>
+        <div class="gallery-item">
+            <a href="Videos/familyvid.mp4" target="_blank" download>
+                <video autoplay loop muted playsinline>
+                    <source src="Videos/familyvid.mp4" type="video/mp4">
+                    <source src="Videos/familyvid.ogg" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+            </a>
+        </div>
+        <div class="gallery-item">
+            <a href="Images/Gallerypics/familypic2.jpg" target="_blank" download>
+                <img src="Images/Gallerypics/familypic2.jpg" alt="Family Photo 3">
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Pets Section -->
+<section class="gallery-section">
+    <h2 class="gallery-title">Pets</h2>
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <a href="Images/Gallerypics/Do1.jpg" target="_blank" download>
+                <img src="Images/Gallerypics/Do1.jpg" alt="Pet Photo 1">
+            </a>
+        </div>
+        <div class="gallery-item">
+            <a href="Videos/dovid.mp4" target="_blank" download>
+                <video autoplay loop muted playsinline>
+                    <source src="Videos/dovid.mp4" type="video/mp4">
+                    <source src="Videos/dovid.ogg" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+            </a>
+        </div>
+        <div class="gallery-item">
+            <a href="Images/Gallerypics/Do2.jpg" target="_blank" download>
+                <img src="Images/Gallerypics/Do2.jpg" alt="Pet Photo 3">
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Me Section -->
+<section class="gallery-section">
+    <h2 class="gallery-title">Me</h2>
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <a href="Images/Gallerypics/me1.jpg" target="_blank" download>
+                <img src="Images/Gallerypics/me1.jpg" alt="Photo of Me 1">
+            </a>
+        </div>
+        <div class="gallery-item">
+            <a href="Images/Gallerypics/me2.jpg" target="_blank" download>
+                <img src="Images/Gallerypics/me2.jpg" alt="Photo of Me 2">
+            </a>
+        </div>
+        <div class="gallery-item">
+            <a href="Images/Gallerypics/me3.jpg" target="_blank" download>
+                <img src="Images/Gallerypics/me3.jpg" alt="Photo of Me 3">
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Scenery Section -->
+<section class="gallery-section">
+    <h2 class="gallery-title">Scenery</h2>
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <a href="Images/Gallerypics/scenery1.jpg" target="_blank" download>
+                <img src="Images/Gallerypics/scenery1.jpg" alt="Scenery Photo 1">
+            </a>
+        </div>
+        <div class="gallery-item">
+            <a href="Videos/sceneryvid.mp4" target="_blank" download>
+                <video autoplay loop muted playsinline>
+                    <source src="Videos/sceneryvid.mp4" type="video/mp4">
+                    <source src="Videos/sceneryvid.ogg" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+            </a>
+        </div>
+        <div class="gallery-item">
+            <a href="Images/Gallerypics/scenery2.jpg" target="_blank" download>
+                <img src="Images/Gallerypics/scenery2.jpg" alt="Scenery Photo 3">
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+        <!-- Background Music-->
+        <audio controls autoplay loop>
+            <source src="Musics/Song.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    
+    </body>
+    </html>
